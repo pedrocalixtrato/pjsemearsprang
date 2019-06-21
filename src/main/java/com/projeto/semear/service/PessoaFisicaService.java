@@ -63,6 +63,8 @@ public class PessoaFisicaService {
 
     private List<PessoaFisicaDTO> montarResposta(List<PessoaFisica> pessoasFisica) {
         List<PessoaFisicaDTO> listPessoaFisicaDTO = new ArrayList<>();
+
+
         for (PessoaFisica p : pessoasFisica) {
             PessoaFisicaDTO pessoaFisicaDTO = new PessoaFisicaDTO();
             BeanUtils.copyProperties(p, pessoaFisicaDTO);
