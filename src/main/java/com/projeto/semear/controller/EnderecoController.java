@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -26,6 +27,7 @@ public class EnderecoController {
     private ApplicationEventPublisher publisher;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('ROLE_CADASTRAR_CATEGORIA') and #oauth2.hasScope('write')")
     public ResponseEntity<Endereco> novoEndereco (@Valid @RequestBody Endereco endereco, HttpServletResponse response) {
 
         Endereco enderecoSalvo = enderecoDao.save(endereco);
@@ -34,7 +36,8 @@ public class EnderecoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Endereco> buscarPorId (@PathVariable Long id) {
+    @PreAuthorize("hasAuthority('ROLE_PESQUISAR_CATEGORIA') and #oauth2.hasScope('read')")
+    public ResponseEntity<Endereco> buscarPorId (@PathVariable Integer id) {
         Endereco endereco = enderecoDao.findById(id).orElse(null);
         return endereco != null ? ResponseEntity.ok(endereco) : ResponseEntity.notFound().build();
     }
@@ -42,6 +45,7 @@ public class EnderecoController {
 
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ROLE_PESQUISAR_CATEGORIA') and #oauth2.hasScope('read')")
     public List<Endereco> buscarTodos() {
         return enderecoDao.findAll();
     }
