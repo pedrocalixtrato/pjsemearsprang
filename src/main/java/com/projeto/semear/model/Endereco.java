@@ -20,6 +20,10 @@ public class Endereco {
     private String cidade;
     private String estado;
 
+    @ManyToOne
+    @JoinColumn(name = "ID_TIPO_ENDERECO", referencedColumnName = "ID")
+    private EnderecoTipo enderecoTipo;
+
     @JoinColumn(name = "ID_PESSOA_FISICA", referencedColumnName = "ID")
     @ManyToOne
     private PessoaFisica pessoaFisica;
@@ -88,6 +92,14 @@ public class Endereco {
     public PessoaFisica getPessoaFisica() {return pessoaFisica;}
 
     public void setPessoaFisica(PessoaFisica pessoaFisica) {this.pessoaFisica = pessoaFisica;}
+
+    public EnderecoTipo getEnderecoTipo() {
+        return enderecoTipo;
+    }
+
+    public void setEnderecoTipo(EnderecoTipo enderecoTipo) {
+        this.enderecoTipo = enderecoTipo;
+    }
 
     @Override
     public boolean equals(Object o) {

@@ -58,6 +58,16 @@ public class PessoaFisica {
     private String nomeMae;
     @Column(name = "NOME_PAI")
     private String nomePai;
+    @Column(name = "CERTIDAO")
+    private String certidao;
+    @Column(name = "CARTORIO")
+    private String cartorio;
+    @Column(name = "TERMO")
+    private String termo;
+
+    @ManyToOne
+    @JoinColumn(name = "ID_TIPO_PESSOA", referencedColumnName = "ID")
+    private PessoaTipo tipoPessoa;
 
 
     @Column(name = "ESTADO_CIVIL")
@@ -280,6 +290,38 @@ public class PessoaFisica {
 
     public void setListaPessoaTelefone(Set<PessoaTelefone> listaPessoaTelefone) {
         this.listaPessoaTelefone = listaPessoaTelefone;
+    }
+
+    public String getCertidao() {
+        return certidao;
+    }
+
+    public void setCertidao(String certidao) {
+        this.certidao = certidao;
+    }
+
+    public String getCartorio() {
+        return cartorio;
+    }
+
+    public void setCartorio(String cartorio) {
+        this.cartorio = cartorio;
+    }
+
+    public String getTermo() {
+        return termo;
+    }
+
+    public void setTermo(String termo) {
+        this.termo = termo;
+    }
+
+    public PessoaTipo getTipoPessoa() {
+        return tipoPessoa;
+    }
+
+    public void setTipoPessoa(PessoaTipo tipoPessoa) {
+        this.tipoPessoa = tipoPessoa;
     }
 
     @Override
