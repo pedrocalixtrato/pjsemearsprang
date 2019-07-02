@@ -1,5 +1,7 @@
 package com.projeto.semear.token;
 
+import com.projeto.semear.config.property.SemearApiProperty;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -19,6 +21,9 @@ import javax.servlet.http.HttpServletResponse;
 //classe responsavel pro interceptar requisiçoes dos controladores neste caso interceptara todos do tipo OAuth2AccessToken
 @ControllerAdvice
 public class RefreshTokenPostProcessor implements ResponseBodyAdvice<OAuth2AccessToken> {
+
+    @Autowired
+    private SemearApiProperty semearApiProperty;
 
     //methodo que filtra s requisiçoes
     @Override
@@ -52,7 +57,7 @@ public class RefreshTokenPostProcessor implements ResponseBodyAdvice<OAuth2Acces
 
         Cookie refreshTokenCookie = new Cookie("refreshToken", refreshToken);
         refreshTokenCookie.setHttpOnly(true);
-        refreshTokenCookie.setSecure(false); // TODO: Mudar para true em producao
+        refreshTokenCookie.setSecure(semearApiProperty.getSeguranca().isEnableHttps()); // TODO: Mudar para true em producao
         refreshTokenCookie.setPath(req.getContextPath() + "/oauth/token");
         refreshTokenCookie.setMaxAge(259200);
         resp.addCookie(refreshTokenCookie);
