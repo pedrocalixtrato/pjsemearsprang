@@ -12,8 +12,6 @@ public class Aluno {
     @Basic(optional = false)
     @Column(name = "ID")
     private Integer id;
-    @Column(name = "NOME")
-    private String nome;
     @Column(name = "DATA_MATRICULA")
     private LocalDate dataMatricula;
     @Column(name = "N_MATRICULA")
@@ -95,14 +93,6 @@ public class Aluno {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public LocalDate getDataMatricula() {

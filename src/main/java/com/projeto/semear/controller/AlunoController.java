@@ -1,8 +1,8 @@
 package com.projeto.semear.controller;
 
 
-import com.projeto.semear.dao.AlunoDao;
-import com.projeto.semear.model.Aluno;
+import com.projeto.semear.dto.AlunosDTO;
+import com.projeto.semear.service.AlunoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,11 +16,11 @@ public class AlunoController {
 
 
     @Autowired
-    private AlunoDao alunoDao;
+    private AlunoService alunoService;
 
     @GetMapping
-    public List<Aluno> buscarTodos(){
-        return alunoDao.findAll();
+    public List<AlunosDTO> buscarTodos(){
+        return alunoService.buscarAlunos();
     }
 
 }
