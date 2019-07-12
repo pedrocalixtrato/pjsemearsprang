@@ -2,6 +2,7 @@ package com.projeto.semear.token;
 
 import com.projeto.semear.config.property.SemearApiProperty;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -19,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 //classe responsavel pro interceptar requisiçoes dos controladores neste caso interceptara todos do tipo OAuth2AccessToken
+@Profile("oauth-security")
 @ControllerAdvice
 public class RefreshTokenPostProcessor implements ResponseBodyAdvice<OAuth2AccessToken> {
 
