@@ -22,7 +22,7 @@ import java.lang.reflect.Array;
 import java.util.Arrays;
 
 
-@Profile("oath-security")
+@Profile("oauth-security")
 @Configuration
 @EnableAuthorizationServer
 @EnableGlobalMethodSecurity(prePostEnabled = true)

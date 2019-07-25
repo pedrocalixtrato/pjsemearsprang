@@ -14,7 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 //Sem essa classe, não será possível injetar a propriedade AuthenticationManager que está como
 // dependência em AuthorizationServerConfig. Por isso precisamos definir como um Bean em nossa classe de configuração.
 
-@Profile("oath-security")
+@Profile("oauth-security")
 @Configuration
 @EnableWebSecurity
 public class OAuthSecurityConfig extends WebSecurityConfigurerAdapter {

@@ -28,7 +28,7 @@ public class RefreshTokenCookiePreProcessorFilter implements Filter {
                 && "refresh_token".equals(req.getParameter("grant_type"))
                 && req.getCookies() != null) {
 
-            // este é a funçao que substituira o antigo for do java 7
+            // este é a funçao que substituirá o antigo for do java 7
             String refreshToken =
                     Stream.of(req.getCookies())
                     .filter(cookie -> "refreshToken".equals(cookie.getName()))
