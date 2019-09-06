@@ -20,12 +20,12 @@ public class Endereco {
     private String cidade;
     private String estado;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ID_TIPO_ENDERECO", referencedColumnName = "ID")
     private EnderecoTipo enderecoTipo;
 
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ID_PESSOA_FISICA", referencedColumnName = "ID")
-    @ManyToOne
     private PessoaFisica pessoaFisica;
 
 

@@ -1,10 +1,8 @@
 package com.projeto.semear.controller;
 
 
-import com.projeto.semear.dao.PessoaFisicaDao;
 import com.projeto.semear.dto.PessoaFisicaDTO;
 import com.projeto.semear.event.RecursoCriadoEvent;
-import com.projeto.semear.model.PessoaFisica;
 import com.projeto.semear.service.PessoaFisicaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;

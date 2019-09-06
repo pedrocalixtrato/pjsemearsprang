@@ -5,7 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "semear")
 public class SemearApiProperty {
 
-    private String originPermitida = "http://localhost:8000";
+    private String originPermitida = "http://192.99.228.142:4200";
 
     private final Seguranca seguranca = new Seguranca();
 

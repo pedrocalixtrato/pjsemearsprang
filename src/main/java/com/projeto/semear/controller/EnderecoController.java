@@ -5,6 +5,8 @@ import com.projeto.semear.event.RecursoCriadoEvent;
 import com.projeto.semear.model.Endereco;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -46,7 +48,7 @@ public class EnderecoController {
 
     @GetMapping
     @PreAuthorize("hasAuthority('ROLE_PESQUISAR_CATEGORIA') and #oauth2.hasScope('read')")
-    public List<Endereco> buscarTodos() {
-        return enderecoDao.findAll();
+    public Page<Endereco> buscarTodos(Pageable pageable) {
+        return enderecoDao.buscarTodos(pageable);
     }
 }
